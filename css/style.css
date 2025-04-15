@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+/* https://www.w3schools.com/css/css3_fonts.asp */
+@font-face {
+  font-family: horizonFont;
+  src: url('../assets/fonts/Horizon-nMeM.ttf');
+}
+
 /* Body and background settings */
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -24,6 +30,7 @@ header h1 {
   font-size: 2.5rem;
   color: #00796b;
   margin-bottom: 10px;
+  font-family: horizonFont;
 }
 
 header p {
@@ -67,6 +74,12 @@ header p {
   font-weight: bold;
 }
 
+.filters input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .filters select,
 .filters button {
   padding: 8px;
@@ -91,26 +104,44 @@ header p {
   flex: 1;
 }
 
-.sort-container {
-  text-align: center;
-  margin-bottom: 20px;
+/* Search Bar and Sort By Styles*/
+.search-and-sort-area {
+  width: 100%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.sort-container label {
+.search-and-sort {
+  display: flex;
   font-weight: bold;
-  margin-right: 10px;
 }
 
-.sort-container select {
+.search-group {
+  display: flex;
+  flex-grow: 4;
+  align-items: center;
+}
+
+.search-group input {
+  flex: 1;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin: 0 15px;
 }
 
-.sort-container input {
+.sortby-group {
+  display: flex;
+  align-items: center;
+}
+
+.sortby-group select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin: 0 15px;
 }
 
 /* Machine container grid */

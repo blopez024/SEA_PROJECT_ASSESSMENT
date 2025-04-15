@@ -1,112 +1,137 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Horizon Machines</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/favicon/tallneck.png"
+      type="image/x-icon"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Horizon Machines</title>
-  <link rel="shortcut icon" href="./images/favicon/tallneck.png" type="image/x-icon" />
+    <meta
+      name="description"
+      content="A Catalog of Horizon Zero Dawn & Forbidden West Machines"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./js/scripts.js"></script>
+  </head>
 
-  <meta name="description" content="A Catalog of Horizon Zero Dawn & Forbidden West Machines" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <script type="module" src="./js/scripts.js"></script>
-</head>
+  <body>
+    <!-- Main Header Text -->
+    <header>
+      <!-- Title -->
+      <h1>
+        HZD x HFW <br />
+        Machines
+      </h1>
+      <!-- Description -->
+      <p>
+        Explore all the machines found within the world of Horizon Zero Dawn and
+        Forbidden West.
+      </p>
+    </header>
 
-<body>
-  <header>
-    <h1>
-      HZD x HFW <br />
-      Machines
-    </h1>
-    <p>
-      Explore all the machines found within the world of Horizon Zero Dawn and
-      Forbidden West.
-    </p>
-  </header>
+    <!-- Components Layout -->
+    <div class="layout">
+      <!-- Sidebar for filters -->
+      <aside class="sidebar">
+        <section class="filters">
+          <h2>Filter Machines</h2>
+          <!-- Form Filters -->
+          <form id="filterForm">
+            <!-- Filter by Game Appearance -->
+            <div class="form-group">
+              <label for="appearsIn">Appears In:</label>
+              <select name="appearsIn" id="appearsIn">
+                <option value="">Any</option>
+                <option value="hzd">Horizon Zero Dawn</option>
+                <option value="hfw">Horizon Forbidden West</option>
+              </select>
+            </div>
+            <!-- Filter by Class Type -->
+            <div class="form-group">
+              <label for="class">Class:</label>
+              <select name="class" id="class">
+                <option value="">Any</option>
+                <option value="acquisition">Acquisition</option>
+                <option value="combat">Combat</option>
+                <option value="communication">Communication</option>
+                <option value="recon">Recon</option>
+                <option value="transport">Transport</option>
+                <option value="unknown">Unknown</option>
+              </select>
+            </div>
+            <!-- Filter by Cauldron -->
+            <div class="form-group">
+              <label for="cauldron">Cauldron:</label>
+              <select name="cauldron" id="cauldron">
+                <option value="">Any</option>
+                <option value="sigma">SIGMA (σ)</option>
+                <option value="rho">RHO (ρ)</option>
+                <option value="xi">XI (ξ)</option>
+                <option value="zeta">ZETA (ζ)</option>
+                <option value="epsilon">EPSILON (ε)</option>
+                <option value="tau">TAU (τ)</option>
+                <option value="gemini">GEMINI (♊︎)</option>
+                <option value="MU">MU (μ)</option>
+                <option value="iota">IOTA (ι)</option>
+                <option value="kappa">KAPPA (κ)</option>
+                <option value="chi">CHI (χ)</option>
+                <option value="theta">THETA (θ)</option>
+              </select>
+            </div>
+            <!-- Filter by Size -->
+            <div class="form-group">
+              <label for="Size">Size:</label>
+              <select name="size" id="size">
+                <option value="">Any</option>
+                <option value="lightweight">Lightweight</option>
+                <option value="midweight">Midweight</option>
+                <option value="heavyweight">Heavyweight</option>
+              </select>
+            </div>
+          </form>
+        </section>
+      </aside>
 
-  <div class="layout">
-    <!-- Side for filters -->
-    <aside class="sidebar">
-      <section class="filters">
-        <h2>Filter Machines</h2>
-        <form id="filterForm">
-          <div class="form-group">
-            <label for="appearsIn">Appears In:</label>
-            <select name="appearsIn" id="appearsIn">
-              <option value="">Any</option>
-              <option value="hzd">Horizon Zero Dawn</option>
-              <option value="hfw">Horizon Forbidden West</option>
-            </select>
+      <!-- Main Content -->
+      <main class="content">
+        <!-- Search Bar and Sort By Dropdown Menu -->
+        <div class="search-and-sort-area">
+          <div class="search-and-sort">
+            <!-- Search Filter -->
+            <div class="search-group">
+              <label for="search">Search By Name:</label>
+              <input
+                type="text"
+                id="searchBox"
+                name="search"
+                placeholder="Search..."
+              />
+            </div>
+            <!-- Sort By -->
+            <div class="sortby-group">
+              <label for="sort">Sort By:</label>
+              <select id="sort" name="sort">
+                <option value="name">Name</option>
+                <option value="challengeLevel">Challenge Level</option>
+                <option value="hp">HP</option>
+                <option value="size">Size</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="class">Class:</label>
-            <select name="class" id="class">
-              <option value="">Any</option>
-              <option value="acquisition">Acquisition</option>
-              <option value="combat">Combat</option>
-              <option value="communication">Communication</option>
-              <option value="recon">Recon</option>
-              <option value="transport">Transport</option>
-              <option value="unknown">Unknown</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="cauldron">Cauldron:</label>
-            <select name="cauldron" id="cauldron">
-              <option value="">Any</option>
-              <option value="sigma">SIGMA (σ)</option>
-              <option value="rho">RHO (ρ)</option>
-              <option value="xi">XI (ξ)</option>
-              <option value="zeta">ZETA (ζ)</option>
-              <option value="epsilon">EPSILON (ε)</option>
-              <option value="tau">TAU (τ)</option>
-              <option value="gemini">GEMINI (♊︎)</option>
-              <option value="MU">MU (μ)</option>
-              <option value="iota">IOTA (ι)</option>
-              <option value="kappa">KAPPA (κ)</option>
-              <option value="chi">CHI (χ)</option>
-              <option value="theta">THETA (θ)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="Size">Size:</label>
-            <select name="size" id="size">
-              <option value="">Any</option>
-              <option value="lightweight">Lightweight</option>
-              <option value="midweight">Midweight</option>
-              <option value="heavyweight">Heavyweight</option>
-            </select>
-          </div>
-        </form>
-    </aside>
+        </div>
 
-    <!-- Main Content -->
-    <main class="content">
-      <!-- Sort By Dropdown -->
-      <div class="sort-container">
+        <!-- Machine Catalog Container -->
+        <div id="machineContainer" class="machine-container"></div>
+      </main>
+    </div>
 
-        <label for="search">Search By Name:</label>
-        <input type="text" id="searchBox" name="search" placeholder="Search..." />
-        <!--  -->
-        <label for="sort">Sort By:</label>
-        <select id="sort" name="sort">
-          <option value="name">Name</option>
-          <option value="challengelvl">Challenge Level</option>
-          <option value="hp">HP</option>
-          <option value="size">Size</option>
-        </select>
-      </div>
+    <footer></footer>
 
-      <!-- Machine Catalog Container -->
-       <div id="machineContainer" class="machine-container"></div>
-    </main>
-  </div>
-
-
-
-  <footer></footer>
-
-  <!-- Modal for machine details -->
+    <!-- Modal for machine details -->
     <div id="machineModel" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -115,6 +140,5 @@
         </div>
       </div>
     </div>
-</body>
-
+  </body>
 </html>
