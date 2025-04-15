@@ -40,6 +40,7 @@
 
 🔃 Sort By
 
+- Name
 - Challenge Level
 - HP
 - Size
@@ -49,8 +50,7 @@
 - Appears In Game
 - Class
 - Cauldron
-- Weakness
-- Strength
+- Size
 
 🔍 Search By
 

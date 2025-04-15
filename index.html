@@ -1,31 +1,120 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script type="text/javascript" src="./js/scripts.js"></script>
-  </head>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Horizon Machines</title>
+  <link rel="shortcut icon" href="./images/favicon/tallneck.png" type="image/x-icon" />
+
+  <meta name="description" content="A Catalog of Horizon Zero Dawn & Forbidden West Machines" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script type="module" src="./js/scripts.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>
+      HZD x HFW <br />
+      Machines
+    </h1>
+    <p>
+      Explore all the machines found within the world of Horizon Zero Dawn and
+      Forbidden West.
+    </p>
+  </header>
+
+  <div class="layout">
+    <!-- Side for filters -->
+    <aside class="sidebar">
+      <section class="filters">
+        <h2>Filter Machines</h2>
+        <form id="filterForm">
+          <div class="form-group">
+            <label for="appearsIn">Appears In:</label>
+            <select name="appearsIn" id="appearsIn">
+              <option value="">Any</option>
+              <option value="hzd">Horizon Zero Dawn</option>
+              <option value="hfw">Horizon Forbidden West</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="class">Class:</label>
+            <select name="class" id="class">
+              <option value="">Any</option>
+              <option value="acquisition">Acquisition</option>
+              <option value="combat">Combat</option>
+              <option value="communication">Communication</option>
+              <option value="recon">Recon</option>
+              <option value="transport">Transport</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cauldron">Cauldron:</label>
+            <select name="cauldron" id="cauldron">
+              <option value="">Any</option>
+              <option value="sigma">SIGMA (σ)</option>
+              <option value="rho">RHO (ρ)</option>
+              <option value="xi">XI (ξ)</option>
+              <option value="zeta">ZETA (ζ)</option>
+              <option value="epsilon">EPSILON (ε)</option>
+              <option value="tau">TAU (τ)</option>
+              <option value="gemini">GEMINI (♊︎)</option>
+              <option value="MU">MU (μ)</option>
+              <option value="iota">IOTA (ι)</option>
+              <option value="kappa">KAPPA (κ)</option>
+              <option value="chi">CHI (χ)</option>
+              <option value="theta">THETA (θ)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Size">Size:</label>
+            <select name="size" id="size">
+              <option value="">Any</option>
+              <option value="lightweight">Lightweight</option>
+              <option value="midweight">Midweight</option>
+              <option value="heavyweight">Heavyweight</option>
+            </select>
+          </div>
+        </form>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Sort By Dropdown -->
+      <div class="sort-container">
+
+        <label for="search">Search By Name:</label>
+        <input type="text" id="searchBox" name="search" placeholder="Search..." />
+        <!--  -->
+        <label for="sort">Sort By:</label>
+        <select id="sort" name="sort">
+          <option value="name">Name</option>
+          <option value="challengelvl">Challenge Level</option>
+          <option value="hp">HP</option>
+          <option value="size">Size</option>
+        </select>
+      </div>
+
+      <!-- Machine Catalog Container -->
+       <div id="machineContainer" class="machine-container"></div>
+    </main>
+  </div>
+
+
+
+  <footer></footer>
+
+  <!-- Modal for machine details -->
+    <div id="machineModel" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalDetails">
+          <!-- Modal details will be dynamically inserted here -->
+        </div>
       </div>
     </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
-  </body>
+</body>
+
 </html>

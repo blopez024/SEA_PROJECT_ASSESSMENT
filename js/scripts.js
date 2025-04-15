@@ -23,6 +23,10 @@
  *
  */
 
+import machines from "../data/horizon_machine_data.js"
+console.log(machines[0])
+
+
 const FRESH_PRINCE_URL =
   "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
 const CURB_POSTER_URL =
