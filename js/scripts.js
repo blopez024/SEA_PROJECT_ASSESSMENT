@@ -1,3 +1,4 @@
+import machines from '../data/horizon_machine_data.js';
 /**
  * Data Catalog Project Starter Code - SEA Stage 2
  *
@@ -23,79 +24,66 @@
  *
  */
 
-import machines from "../data/horizon_machine_data.js"
-console.log(machines[0])
+function createTitle(name) {
+  return `
+    <div class="name">${name}</div>
+  `
+}
 
+function createImage(src, alt) {
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
+  if (src == undefined) {
+    src = "../assets/images/grazer.webp"
+  }
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
+  return `
+    <img
+      src=${src}
+      alt=${alt}
+    />
+  `
+}
 
-// This function adds cards the page to display the data in the array
-function showCards() {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
+function createRow(label, values) {
+  const items = Array.isArray(values) ? values : [values];
+  const listItems = items.map(item => `<li>${item}</li>`).join('');
+  return `
+    <div class="row">
+      <h4>${label}</h4>
+      <ul>
+        ${listItems}
+      </ul>
+    </div>
+  `
+}
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+function renderMachines(machines) {
+  const container = document.getElementById('machineContainer');
+  if (container == null) return;
+  container.innerHTML = '';
 
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
+  machines.forEach((machine, index) => {
+    const card = document.createElement('div');
+    card.className = 'machine-card';
+    card.dataset.index = index;
+
+    if (index == 0) {
+      console.log(machine);
+      console.log(machine.ChallengeLevel.Base)
     }
 
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
-  }
+    card.innerHTML = `
+      ${createTitle(machine.Machine)}
+      ${createImage(machine.Image, machine.ImageAlt)}
+      ${createRow('Challenge Level', machine.ChallengeLevel.Base)}
+      ${createRow('HP', machine.HP.Base)}
+      ${createRow('Size', machine.Size)}
+      ${createRow('Class', machine.Class)}
+      ${createRow('Cauldron', machine.Cauldron)}
+    `;
+
+    container.appendChild(card);
+  });
 }
 
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
-
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
-}
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
-
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
-}
-
-function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
-}
+renderMachines(machines);
