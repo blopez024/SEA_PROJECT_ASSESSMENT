@@ -27,26 +27,27 @@ import machines from '../data/horizon_machine_data.js';
 function createTitle(name) {
   return `
     <div class="name">${name}</div>
-  `
+  `;
 }
 
 function createImage(src, alt) {
-
   if (src == undefined) {
-    src = "../assets/images/grazer.webp"
+    src = '../assets/images/grazer.webp';
   }
 
   return `
-    <img
-      src=${src}
-      alt=${alt}
-    />
-  `
+    <div class="image-box">
+      <img
+        src=${src}
+        alt=${alt}
+      />
+    </div>
+  `;
 }
 
 function createRow(label, values) {
   const items = Array.isArray(values) ? values : [values];
-  const listItems = items.map(item => `<li>${item}</li>`).join('');
+  const listItems = items.map((item) => `<li>${item}</li>`).join('');
   return `
     <div class="row">
       <h4>${label}</h4>
@@ -54,7 +55,7 @@ function createRow(label, values) {
         ${listItems}
       </ul>
     </div>
-  `
+  `;
 }
 
 function renderMachines(machines) {
@@ -66,11 +67,6 @@ function renderMachines(machines) {
     const card = document.createElement('div');
     card.className = 'machine-card';
     card.dataset.index = index;
-
-    if (index == 0) {
-      console.log(machine);
-      console.log(machine.ChallengeLevel.Base)
-    }
 
     card.innerHTML = `
       ${createTitle(machine.Machine)}
@@ -85,5 +81,46 @@ function renderMachines(machines) {
     container.appendChild(card);
   });
 }
+
+function filterAndRenderMachines() {
+  const appearsIn = document.getElementById('appearsIn').value.toLowerCase();
+  const classType = document.getElementById('class').value.toLowerCase();
+  const cauldron = document.getElementById('cauldron').value.toLowerCase();
+  const size = document.getElementById('size').value.toLowerCase();
+  const searchQuery = document.getElementById('searchbar').value.toLowerCase();
+  const sortBy = document.getElementById('sort').value;
+
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+  let filteredMachines = machines.filter(machine => {
+    const matchesSearch = machine.Machine.toLowerCase().includes(searchQuery);
+    const matchesAppearsIn = !appearsIn || machine.AppearsIn.some(game => game.toLowerCase() === appearsIn);
+    const matchesClass = !classType || machine.Class.toLowerCase() === classType;
+    const matchesCauldron = !cauldron || machine.Cauldron.some(c => c.toLowerCase() === cauldron);
+    const matchesSize = !size || machine.Size.toLowerCase() === size;
+
+    return matchesSearch && matchesAppearsIn && matchesClass && matchesCauldron && matchesSize;
+  });
+
+  // Sorting logic
+  filteredMachines.sort((a, b) => {
+    if (sortBy === 'name') {
+      return a.Machine.localeCompare(b.Machine);
+    } else if (sortBy === 'challengeLevel') {
+      return a.ChallengeLevel.Base - b.ChallengeLevel.Base;
+    } else if (sortBy === 'hp') {
+      return a.HP.Base - b.HP.Base;
+    } else if (sortBy === 'size') {
+      const sizeOrder = { lightweight: 1, midweight: 2, heavyweight: 3 };
+      return sizeOrder[a.Size.toLowerCase()] - sizeOrder[b.Size.toLowerCase()];
+    }
+    return 0;
+  });
+
+  renderMachines(filteredMachines);
+}
+
+document.getElementById('filterForm').addEventListener('input', filterAndRenderMachines);
+document.getElementById('searchbar').addEventListener('input', filterAndRenderMachines);
+document.getElementById('sort').addEventListener('change', filterAndRenderMachines);
 
 renderMachines(machines);
