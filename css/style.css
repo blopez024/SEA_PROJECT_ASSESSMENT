@@ -14,10 +14,13 @@
 /* Body and background settings */
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1;
   padding: 20px;
-  background: linear-gradient(to bottom, #e0f7fa, #fff);
   color: #333;
+
+  background: url('../assets/images/background.webp') top center no-repeat,
+    #858c8e;
+  background-size: 100% auto;
 }
 
 /* Header styles */
@@ -27,10 +30,11 @@ header {
 }
 
 header h1 {
-  font-size: 2.5rem;
-  color: #00796b;
+  font-size: 3.5rem;
+  color: white;
   margin-bottom: 10px;
   font-family: horizonFont;
+  text-shadow: 1px 1px 2px black;
 }
 
 header p {
@@ -46,7 +50,7 @@ header p {
 /* Sidebar styles */
 .sidebar {
   width: 250px;
-  background: #fff;
+  background: #003861;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -55,7 +59,7 @@ header p {
 .filters h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #00796b;
+  color: white;
 }
 
 .filters form {
@@ -72,6 +76,7 @@ header p {
 .filters label {
   margin-bottom: 5px;
   font-weight: bold;
+  color: white;
 }
 
 .filters input {
@@ -80,23 +85,10 @@ header p {
   border-radius: 4px;
 }
 
-.filters select,
-.filters button {
+.filters select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-.filters button {
-  background-color: #00796b;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.filters button:hover {
-  background-color: #005a4f;
 }
 
 /* Main content styles */
@@ -111,6 +103,8 @@ header p {
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #003861;
+  color: white;
 }
 
 .search-and-sort {
@@ -208,7 +202,7 @@ footer {
   text-align: center;
   margin-top: 30px;
   font-size: 0.8rem;
-  color: #555;
+  color: white;
 }
 
 /* Responsive adjustments */
@@ -220,47 +214,6 @@ footer {
   .sidebar {
     width: 100%;
   }
-}
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 600px;
-  border-radius: 8px;
-  position: relative;
-  animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #333;
 }
 
 .image-box {

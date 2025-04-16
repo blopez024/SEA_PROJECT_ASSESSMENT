@@ -667,7 +667,7 @@ const machines = [
     {
         Machine: 'Control Tower',
         Class: 'Unknown',
-        Size: '-',
+        Size: 'None',
         Cauldron: ['PSI'],
         Creator: 'HEPHAESTUS',
         ChallengeLevel: {
